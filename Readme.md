@@ -1,0 +1,3 @@
+I have two years of experience as a front-end developer specializing in Angular. Recently, I decided to deepen my understanding of web development by exploring the backend. This project marks my first step toward learning backend development with Node.js and transitioning into full-stack development. 
+
+The project is inspired by a YouTube tutorial on backend development by Hitesh Choudhary, a valuable resource available for free to all aspiring developers.
