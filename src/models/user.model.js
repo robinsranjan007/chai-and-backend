@@ -1,6 +1,7 @@
 import mongoose , {Schema} from "mongoose";
 import  JWT from "jsonwebtoken";
 import bcrypt from "bcrypt"
+ 
 
 
 const userSchema = new Schema(
@@ -44,7 +45,7 @@ coverImage:{
 watchHistory:[
     {
     type:mongoose.Schema.ObjectId,
-    ref:Video
+    ref:"Video"
     }
 ],
 password:{
@@ -89,9 +90,9 @@ userSchema.methods.generateRefreshToken=async function(){
         {
             _id:this._id,
         },
-        process.env.REFRESH_TOKEN_SECRET_TOKEN_SECERET,
+        process.env.process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn:process.env.ACCESS_TOKEN_EXPIRY
+            expiresIn:process.env.REFRESH_TOKEN_SECRET
         }
         )
 }
@@ -101,7 +102,7 @@ userSchema.pre("save",async function(next){
 
     if(this.isModified("password"))
     {
-        this.password =bcrypt.hash(this.password,10)
+        this.password = await bcrypt.hash(this.password,10)
         next()
     }
 
